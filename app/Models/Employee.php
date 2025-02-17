@@ -24,7 +24,6 @@ class Employee extends Authenticatable
         'leave_balance',
         'photo',
         'password',
-        'role',
         'user_id'
     ];
 

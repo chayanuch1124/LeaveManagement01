@@ -40,6 +40,29 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/leaves/{id}', [LeaveController::class, 'update'])->name('leave.approval.update');
 });
 
+// use App\Http\Controllers\LeaveController;
+// use App\Http\Controllers\EmployeeController;
+
+
+// // พนักงานเข้าถึงได้แค่หน้า dashboard, leave.apply, leave.edit
+// Route::middleware(['auth', 'role:employee'])->group(function () {
+//     Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
+//     Route::get('/leave/apply', [LeaveController::class, 'apply'])->name('leave.apply');
+//     Route::get('/leave/{id}/edit', [LeaveController::class, 'edit'])->name('leave.edit');
+// });
+
+// // หัวหน้าทีมเข้าถึงได้ทุกหน้า รวมถึงหน้า dashboard, leave.apply, leave.edit ด้วย
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+//     // หน้าเฉพาะสำหรับ admin
+//     Route::get('/leave/index', [LeaveController::class, 'index'])->name('leave.index');
+//     Route::get('/leave/{id}', [LeaveController::class, 'show'])->name('leave.show');
+//     Route::post('/leave/approve/{id}', [LeaveController::class, 'approve'])->name('leave.approve');
+
+//     // เพิ่มเส้นทางที่ให้ admin เข้าถึงหน้าเหล่านี้ด้วย
+//     Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
+//     Route::get('/leave/apply', [LeaveController::class, 'apply'])->name('leave.apply');
+//     Route::get('/leave/{id}/edit', [LeaveController::class, 'edit'])->name('leave.edit');
+// });
 
 
 

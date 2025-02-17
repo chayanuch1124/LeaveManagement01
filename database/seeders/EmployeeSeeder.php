@@ -19,7 +19,6 @@ class EmployeeSeeder extends Seeder
                 'leave_balance' => 10,
                 'photo' => 'https://i.pinimg.com/736x/fc/05/93/fc05937bc2eb4e0ed4b01d7a7ed8bab9.jpg',
                 'password' => Hash::make('password'),
-                'role' => 'employee',
                 'user_id' => 1,
             ],
             [
@@ -30,7 +29,6 @@ class EmployeeSeeder extends Seeder
                 'leave_balance' => 12,
                 'photo' => 'https://i.pinimg.com/736x/1e/0c/3f/1e0c3f8daf12cad7b251b04c9dcd0df0.jpg',
                 'password' => Hash::make('password'),
-                'role' => 'employee',
                 'user_id' => 2,
             ],
             [
@@ -41,7 +39,6 @@ class EmployeeSeeder extends Seeder
                 'leave_balance' => 15,
                 'photo' => 'https://i.pinimg.com/736x/7f/03/fa/7f03fa140d49509862df3fbef568afb8.jpg',
                 'password' => Hash::make('password'),
-                'role' => 'team_leader',
                 'user_id' => 3,
             ]
         ]);
