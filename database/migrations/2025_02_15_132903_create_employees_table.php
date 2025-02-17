@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('leave_balance')->default(10); // จำนวนวันลาที่เหลือ
             $table->string('photo')->nullable(); // URL รูปโปรไฟล์
             $table->string('password'); // รหัสผ่าน (เข้ารหัส Hash)
+            $table->string('role')->nullable();
             $table->integer('user_id')->nullable();
         });
     }

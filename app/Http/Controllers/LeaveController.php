@@ -42,10 +42,16 @@ class LeaveController extends Controller
     /**
      * แสดงรายการการลาของพนักงาน
      */
-    public function index()
+    public function dashboard()
     {
         $leaves = Leave::where('employee_id', Auth::id())->get();
         return view('dashboard', compact('leaves'));
+    }
+    
+    public function index()
+    {
+        $leaves = Leave::with('employee')->get();
+        return view('leave.index', compact('leaves'));
     }
 
     /**

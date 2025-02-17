@@ -8,6 +8,7 @@ use App\Models\Leave;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class EmployeeController extends Controller
 {
     /**
@@ -18,14 +19,14 @@ class EmployeeController extends Controller
         $user = Auth::user();
         // dd(Auth::user()->name);
         $user = auth()->guard()->user();
-        
+
         // $user = $auth->name;
         // dd(auth()->guard()->user()); // ดึงข้อมูลพzนักงานที่ล็อกอินอยู่
         // dd($user);
         // $employees = Employee::all(); // ✅ ถูกต้อง
         $employees = Employee::where('user_id', $user->id)->first();
         $leaves = Leave::where('employee_id', $user->id)->get();
-        return view('employee_dashboard', compact('user', 'leaves','employees'));
+        return view('employee_dashboard', compact('user', 'leaves', 'employees'));
     }
 
     /**
@@ -100,4 +101,6 @@ class EmployeeController extends Controller
         $employee->delete();
         return redirect()->route('employee.index')->with('success', 'ลบพนักงานเรียบร้อยแล้ว');
     }
+    // ใน EmployeeController.php
+    
 }

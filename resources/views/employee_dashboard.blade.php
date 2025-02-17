@@ -64,10 +64,12 @@
                     <span class="menu-text text-sm font-medium text-gray-600">Leave Form</span>
                     </li>
                 </a>
-                <li class="menu-item">
-                    <span class="text-gray-600 hover:text-gray-900">📜</span>
-                    <span class="menu-text text-sm font-medium text-gray-600">Leave History</span>
-                </li>
+                <a href="{{ route('leave.index') }}" <li class="menu-item">
+                    <li class="menu-item">
+                        <span class="text-gray-600 hover:text-gray-900">📜</span>
+                        <span class="menu-text text-sm font-medium text-gray-600">Manage Leave</span>
+                    </li>
+                </a>
                 <div class="p-4 border-t">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -145,17 +147,19 @@
                                     {{ ucfirst($leave->status) }}
                                 </span>
                             </td>
-                            
+
                             <td class="border border-gray-200 px-4 py-2 text-center">
                                 @if ($leave->status !== 'approved')
-                                    <a href="{{ route('leave.edit', $leave->id) }}" class="bg-yellow-500 text-white px-2 py-1 rounded-md">
+                                    <a href="{{ route('leave.edit', $leave->id) }}"
+                                        class="bg-yellow-500 text-white px-2 py-1 rounded-md">
                                         ✏️ แก้ไข
                                     </a>
-                            
-                                    <form action="{{ route('leave.destroy', $leave->id) }}" method="POST" style="display:inline;">
+
+                                    <form action="{{ route('leave.destroy', $leave->id) }}" method="POST"
+                                        style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded-md" 
+                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded-md"
                                             onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบใบลานี้?');">
                                             🗑️ ลบ
                                         </button>
