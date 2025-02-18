@@ -49,4 +49,7 @@ class Employee extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
+
+    
+
 }

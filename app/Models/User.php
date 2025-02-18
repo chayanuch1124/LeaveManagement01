@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -46,7 +47,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function employee(){
-        return $this->hasOne(Employee::class,'user_id','id');
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'user_id', 'id');
     }
 }

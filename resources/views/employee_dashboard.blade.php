@@ -64,12 +64,15 @@
                     <span class="menu-text text-sm font-medium text-gray-600">Leave Form</span>
                     </li>
                 </a>
-                <a href="{{ route('leave.index') }}" <li class="menu-item">
-                    <li class="menu-item">
-                        <span class="text-gray-600 hover:text-gray-900">📜</span>
-                        <span class="menu-text text-sm font-medium text-gray-600">Manage Leave</span>
-                    </li>
-                </a>
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('leave.index') }}">
+                        <li class="menu-item">
+                            <span class="text-gray-600 hover:text-gray-900">📜</span>
+                            <span class="menu-text text-sm font-medium text-gray-600">Manage Leave</span>
+                        </li>
+                    </a>
+                @endif
+
                 <div class="p-4 border-t">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

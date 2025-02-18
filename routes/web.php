@@ -37,31 +37,30 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/leave/{id}', [LeaveController::class, 'destroy'])->name('leave.destroy');
     Route::get('/leave/index', [LeaveController::class, 'index'])->name('leave.index');
     Route::get('/leaves/{id}', [LeaveController::class, 'show'])->name('leave.show');
-    Route::put('/leaves/{id}', [LeaveController::class, 'update'])->name('leave.approval.update');
+    Route::put('leave/{id}/status', [LeaveController::class, 'updateStatus'])->name('leave.updateStatus');
 });
 
 // use App\Http\Controllers\LeaveController;
 // use App\Http\Controllers\EmployeeController;
 
 
-// // พนักงานเข้าถึงได้แค่หน้า dashboard, leave.apply, leave.edit
-// Route::middleware(['auth', 'role:employee'])->group(function () {
+// // ✅ Employee เข้าถึงเฉพาะ /dashboard, leave.apply, leave.edit
+// Route::middleware(['auth', 'role:employee,admin'])->group(function () {
 //     Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
-//     Route::get('/leave/apply', [LeaveController::class, 'apply'])->name('leave.apply');
+//     Route::get('/leave/apply', [LeaveController::class, 'create'])->name('leave.apply');
+//     Route::post('/leave/apply', [LeaveController::class, 'store'])->name('leave.store');
 //     Route::get('/leave/{id}/edit', [LeaveController::class, 'edit'])->name('leave.edit');
+//     Route::put('/leave/{id}', [LeaveController::class, 'update'])->name('leave.update');
+//     Route::delete('/leave/{id}', [LeaveController::class, 'destroy'])->name('leave.destroy');
 // });
 
-// // หัวหน้าทีมเข้าถึงได้ทุกหน้า รวมถึงหน้า dashboard, leave.apply, leave.edit ด้วย
+// // ✅ Admin เข้าถึงทุกหน้า
 // Route::middleware(['auth', 'role:admin'])->group(function () {
-//     // หน้าเฉพาะสำหรับ admin
+//     Route::get('/dashboard', [EmployeeController::class, 'dashboard'])->name('dashboard');
 //     Route::get('/leave/index', [LeaveController::class, 'index'])->name('leave.index');
-//     Route::get('/leave/{id}', [LeaveController::class, 'show'])->name('leave.show');
-//     Route::post('/leave/approve/{id}', [LeaveController::class, 'approve'])->name('leave.approve');
+//     Route::get('/leaves/{id}', [LeaveController::class, 'show'])->name('leave.show');
+//     Route::put('/leave/{id}', [LeaveController::class, 'update'])->name('leave.approval.update');
 
-//     // เพิ่มเส้นทางที่ให้ admin เข้าถึงหน้าเหล่านี้ด้วย
-//     Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
-//     Route::get('/leave/apply', [LeaveController::class, 'apply'])->name('leave.apply');
-//     Route::get('/leave/{id}/edit', [LeaveController::class, 'edit'])->name('leave.edit');
 // });
 
 
