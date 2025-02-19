@@ -78,9 +78,20 @@ class EmployeeController extends Controller
      * แสดงรายการพนักงานทั้งหมด (สำหรับ Admin หรือ Manager)
      */
     public function index()
+    
     {
-        $employee = Employee::all();
-        return view('employee.index', compact('employee'));
+        $user = Auth::user();
+        // dd(Auth::user()->name);
+        $user = auth()->guard()->user();
+
+        // $user = $auth->name;
+        // dd(auth()->guard()->user()); // ดึงข้อมูลพzนักงานที่ล็อกอินอยู่
+        // dd($user);
+        // $employees = Employee::all(); // ✅ ถูกต้อง
+        $employees = Employee::where('user_id', $user->id)->first();
+        $leaves = Leave::where('employee_id', $user->id)->get();
+        // $employee = Employee::all();
+        return view('employee_dashboard', compact('user', 'leaves', 'employees'));
     }
 
     /**

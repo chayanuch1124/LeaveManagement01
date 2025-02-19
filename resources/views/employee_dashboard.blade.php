@@ -152,7 +152,7 @@
                             </td>
 
                             <td class="border border-gray-200 px-4 py-2 text-center">
-                                @if ($leave->status !== 'approved')
+                                @if ($leave->status !== 'approved' && $leave->status !== 'rejected') 
                                     <a href="{{ route('leave.edit', $leave->id) }}"
                                         class="bg-yellow-500 text-white px-2 py-1 rounded-md">
                                         ✏️ แก้ไข

@@ -14,9 +14,9 @@ class IsEmployee
             return redirect('/login'); // ถ้าไม่ได้ล็อกอิน ให้กลับไปหน้า Login
         }
         // // ✅ ตรวจสอบบทบาทของผู้ใช้
-        // if (!in_array(Auth::user()->role, $roles)) {
-        //     abort(403, 'Unauthorized'); // ❌ ถ้าไม่มีสิทธิ์ ให้แสดง Error 403
-        // }
+        if (!in_array(Auth::user()->role, $roles)) {
+            abort(403, 'Unauthorized'); // ❌ ถ้าไม่มีสิทธิ์ ให้แสดง Error 403
+        }
 
 
         return $next($request);
